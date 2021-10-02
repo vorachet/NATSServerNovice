@@ -171,3 +171,22 @@ Use programs given by https://github.com/nats-io/nats.c/tree/main/examples
     -tlscert ./certs/ca.pem \
     -tlskey ./certs/ca-key.pem 
 ```
+
+# Docker composer 
+
+```
+version: "3"
+services:
+  nats:
+    image: nats:latest
+    hostname: nats-server
+    command: "-c /tls.conf -DV"
+    volumes:
+      - "./tls.conf:/tls.conf"
+      - "./certs/server.pem:/certs/server.pem"
+      - "./certs/server-key.pem:/certs/server-key.pem"
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+
+```
