@@ -180,7 +180,7 @@ services:
   nats:
     image: nats:latest
     hostname: nats-server
-    command: "-c /tls.conf -DV"
+    command: "-c /tls.conf -D"
     volumes:
       - "./tls.conf:/tls.conf"
       - "./certs/server.pem:/certs/server.pem"
